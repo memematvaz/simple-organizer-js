@@ -12,18 +12,18 @@ document.addEventListener('DOMContentLoaded', localStorageReady);
 function addWork(e) {
     e.preventDefault();
 
-    const textarea = document.getElementById('textarea').value;
+    const work = document.getElementById('textarea').value;
 
     const deleteButton = document.createElement('a');
     deleteButton.classList = 'delete-button';
     deleteButton.innerText = 'X';
 
     const li = document.createElement('li');
-    li.innerText = textarea;
+    li.innerText = work;
     li.appendChild(deleteButton)
     workList.appendChild(li);
 
-    addWorkLocalStorage(textarea);
+    addWorkLocalStorage(work);
 }
 
 function deleteWork(e) {
@@ -35,17 +35,17 @@ function deleteWork(e) {
 }
 
 function localStorageReady() {
-    let textareas;
+    let works;
 
-    textareas = getTextTareasLocalStorage();
+    works = getTextTareasLocalStorage();
 
-    textareas.forEach(function(textarea) {
+    works.forEach(function(work) {
         const deleteButton = document.createElement('a');
         deleteButton.classList = 'delete-button';
         deleteButton.innerText = 'X';
 
         const li = document.createElement('li');
-        li.innerText = textarea;
+        li.innerText = work;
         li.appendChild(deleteButton);
         workList.appendChild(li);
    });
@@ -53,40 +53,40 @@ function localStorageReady() {
 }
 
 
-function addWorkLocalStorage(textarea) {
-    let textareas;
+function addWorkLocalStorage(work) {
+    let works;
 
-    textareas = getTextTareasLocalStorage();
+    works = getTextTareasLocalStorage();
     
-    textareas.push(textarea);
+    works.push(work);
 
-    localStorage.setItem('textareas', JSON.stringify(textareas));
+    localStorage.setItem('works', JSON.stringify(works));
 }
 
 function getTextTareasLocalStorage() {
-    let textareas;
+    let works;
 
-    if(localStorage.getItem('textareas') === null) {
-        textareas = [];
+    if(localStorage.getItem('works') === null) {
+        works = [];
     } else {
-        textareas = JSON.parse(localStorage.getItem('textareas'));
+        works = JSON.parse(localStorage.getItem('works'));
     }
-    return textareas;
+    return works;
 
 }
 
-function deleteWorkLocalStorage(textarea) {
-    let textareas, deleteTextarea;
+function deleteWorkLocalStorage(work) {
+    let works, deleteWork;
 
-    deleteTextarea = textarea.substring(0, textarea.length -1);
+    deleteWork = work.substring(0, work.length -1);
 
-    textareas = getTextTareasLocalStorage();
+    works = getTextTareasLocalStorage();
 
-    textareas.forEach(function(textarea, index){
-        if(deleteTextarea === textarea) {textareas.splice(index, 1)}
+    works.forEach(function(work, index){
+        if(deleteWork === work) {works.splice(index, 1)}
         
-    })
+    });
 
-    localStorage.setItem('textareas', JSON.stringify(textareas));
+    localStorage.setItem('works', JSON.stringify(works));
 }
 
