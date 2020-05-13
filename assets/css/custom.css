@@ -3,13 +3,20 @@ h1, h2 {
 
 }
 
+h1 {padding: 20px;}
+
 #contenido {
     margin-top: 40px;
 }
-.borrar-tweet,
-.borrar-tweet:hover {
+.delete-button,
+.delete-button:hover {
     float: right;
     cursor: pointer;
-    color: red;
+    color: rgb(25, 0, 255);
     font-weight: bold;
+}
+
+#wrapper {
+    background: linear-gradient(45deg, rgb(117, 209, 201) 10%, rgb(234, 240, 240) 90%);
+    height: 100vh
 }
